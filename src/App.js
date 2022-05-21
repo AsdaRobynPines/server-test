@@ -1,22 +1,23 @@
+import { useSelector, useDispatch } from 'react-redux';
+import {updateStatus} from './actions/actions.js';
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const dispatch = useDispatch()
+  const { status } = useSelector(state => state)
+  console.log(status)
+  
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+         {status}
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <button onClick={() => dispatch(updateStatus('a call?'))}>
           Learn React
-        </a>
+        </button>
       </header>
     </div>
   );
